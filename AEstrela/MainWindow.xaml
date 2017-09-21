@@ -1,0 +1,19 @@
+﻿<Window x:Class="AEstrelaCaminho.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AEstrelaCaminho"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <StackPanel Name="conteinerPrincipal">
+            
+        </StackPanel>
+        <Label Name="lblMsg">Clique na origem</Label>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btnProcessar" Width="150" Margin="5" Visibility="Hidden" Click="btnProcessar_Click">Processar</Button>
+            <Button Name="btnLimpar" Width="150" Margin="5" Visibility="Hidden" Click="btnLimpar_Click">Limpar</Button>      
+        </StackPanel>
+    </StackPanel>
+</Window>
