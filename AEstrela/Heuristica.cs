@@ -18,7 +18,7 @@ namespace AEstrelaCaminho
             double a = atual.verticeAtual.linha - meta.linha;
             double b = atual.verticeAtual.coluna - meta.coluna;
 
-            atual.CustoH = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+            atual.CustoH = Math.Sqrt(Math.Pow(a , 2) + Math.Pow(b, 2));
         }
     }
 }

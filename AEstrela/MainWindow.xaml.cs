@@ -26,6 +26,10 @@ namespace AEstrelaCaminho
 
         private ETipoVertice[,] tabuleiro = new ETipoVertice[numeroLinhas,numeroColunas];
         private Label[,] labels = new Label[numeroLinhas, numeroColunas];
+
+        private Vertice origem = null;
+        private Vertice meta = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -73,12 +77,14 @@ namespace AEstrelaCaminho
                     tabuleiro[i, j] = tipoClick;
                     if (tipoClick == ETipoVertice.Origem)
                     {
+                        origem = new Vertice(i, j);
                         labels[i, j].Background = Brushes.Blue;
                         tipoClick = ETipoVertice.Meta;
                         lblMsg.Content = "Clique na meta";
                     }
                     else if (tipoClick == ETipoVertice.Meta)
                     {
+                        meta = new Vertice(i, j);
                         labels[i, j].Background = Brushes.Red;
                         tipoClick = ETipoVertice.Obstaculo;
                         lblMsg.Content = "Clique nos obstáculos";
@@ -96,12 +102,39 @@ namespace AEstrelaCaminho
 
         private void btnProcessar_Click(object sender, RoutedEventArgs e)
         {
+            AEstrela algoritmo = new AEstrela();
 
+            List<Vertice> caminho;
+            if(algoritmo.Executar(tabuleiro, numeroLinhas, numeroColunas, origem, meta, new Heuristica(),out caminho))
+                mostrarCaminho(caminho);
+            else
+                MessageBox.Show("caminho não encontrado!");
+
+
+            btnLimpar.Visibility = Visibility.Hidden;
+            btnProcessar.IsEnabled = true;
+   
+
+        }
+
+        private void mostrarCaminho(List<Vertice> caminho)
+        {
+           foreach(var v in caminho)
+            {
+                if (tabuleiro[v.linha, v.coluna] == ETipoVertice.Vazio)
+                    labels[v.linha, v.coluna].Background = Brushes.Green;
+            }
         }
 
         private void btnLimpar_Click(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < numeroLinhas; i++)
+                for (int j = 0; j < numeroColunas; j++)
+                    if(tabuleiro[i, j] == ETipoVertice.Vazio)
+                        labels[i,j].Background = Brushes.Silver;
 
+            btnLimpar.Visibility = Visibility.Hidden;
+            btnProcessar.IsEnabled = true;
         }
     }
 }

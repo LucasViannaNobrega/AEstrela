@@ -87,7 +87,18 @@ namespace AEstrelaCaminho
 
         private List<Vertice> retornarCaminho(Rastreamento atual)
         {
-            throw new NotImplementedException();
+            List<Vertice> lista = new List<Vertice>();
+            Rastreamento aux = atual;
+
+            while(aux != null)
+            {
+                lista.Add(aux.verticeAtual);
+
+                aux = aux.Anterior;
+            }
+            
+
+            return lista;
         }
     }
 }
