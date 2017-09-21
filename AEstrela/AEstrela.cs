@@ -40,7 +40,7 @@ namespace AEstrelaCaminho
                         if (i >= 0 && i < numeroLinhas)
                             for (int j = atual.verticeAtual.coluna; j <= atual.verticeAtual.coluna + 1; j++)
                                 if (j >= 0 && j < numeroColunas)
-                                    if (atual.verticeAtual.linha != i && atual.verticeAtual.coluna != j)
+                                    if (atual.verticeAtual.linha != i || atual.verticeAtual.coluna != j)
                                         if (espacoBusca[i, j] != ETipoVertice.Obstaculo)
                                             adicionarVertice(abertos, fechados, atual, meta, heuristica, i, j);
 
