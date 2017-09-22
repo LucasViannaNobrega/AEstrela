@@ -38,7 +38,7 @@ namespace AEstrelaCaminho
 
                     for (int i = atual.verticeAtual.linha - 1; i <= atual.verticeAtual.linha + 1; i++)
                         if (i >= 0 && i < numeroLinhas)
-                            for (int j = atual.verticeAtual.coluna; j <= atual.verticeAtual.coluna + 1; j++)
+                            for (int j = atual.verticeAtual.coluna - 1; j <= atual.verticeAtual.coluna + 1; j++)
                                 if (j >= 0 && j < numeroColunas)
                                     if (atual.verticeAtual.linha != i || atual.verticeAtual.coluna != j)
                                         if (espacoBusca[i, j] != ETipoVertice.Obstaculo)
